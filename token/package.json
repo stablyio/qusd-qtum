@@ -1,0 +1,44 @@
+{
+  "name": "qusdtoken",
+  "version": "1.0.0",
+  "description": "QUSD Token Contracts",
+  "main": "truffle-config.js",
+  "dependencies": {
+    "@openzeppelin/contracts": "^3.4.0"
+  },
+  "devDependencies": {
+    "@openzeppelin/cli": "^2.8.2",
+    "@openzeppelin/test-helpers": "^0.5.4",
+    "@openzeppelin/truffle-upgrades": "^1.5.0",
+    "chai": "^4.3.0",
+    "ethlint": "^1.2.5",
+    "openzeppelin-test-helpers": "^0.5.1",
+    "solc": "0.6.12",
+    "solidity-coverage": "^0.7.1",
+    "truffle": "5.1.65",
+    "truffle-flattener": "^1.5.0",
+    "truffle-hdwallet-provider": "^1.0.17"
+  },
+  "scripts": {
+    "compile": "truffle compile",
+    "test": "truffle test",
+    "generate-abi": "yarn generate-token-abi && yarn generate-issuer-abi && yarn generate-proxy-abi",
+    "generate-token-abi": "mkdir -p abi-out && solcjs --abi ./flattened/QUSDImplementation.sol -o ./abi-out && cp ./abi-out/__flattened_QUSDImplementation_sol_QUSDImplementation.abi ./QUSD.abi",
+    "generate-issuer-abi": "mkdir -p abi-out && solcjs --abi ./flattened/QUSDIssuer.sol -o ./abi-out && cp ./abi-out/__flattened_QUSDIssuer_sol_QUSDIssuer.abi ./QUSDIssuer.abi",
+    "generate-proxy-abi": "mkdir -p abi-out && solcjs --abi ./flattened/QUSDProxy.sol -o ./abi-out && cp ./abi-out/__flattened_QUSDProxy_sol_QUSDProxy.abi ./QUSDProxy.abi",
+    "flatten": "yarn flatten-token && yarn flatten-issuer && yarn flatten-proxy",
+    "flatten-token": "truffle-flattener ./contracts/QUSDImplementation.sol > ./flattened/QUSDImplementation.sol",
+    "flatten-issuer": "truffle-flattener ./contracts/QUSDIssuer.sol > ./flattened/QUSDIssuer.sol",
+    "flatten-proxy": "truffle-flattener ./contracts/QUSDProxy.sol > ./flattened/QUSDProxy.sol",
+    "lint": "npx ethlint -d ./contracts/ --fix",
+    "coverage": "truffle run coverage",
+    "migrate": "truffle migrate"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com:stablyio/qusd-qtum.git"
+  },
+  "author": "Stably",
+  "license": "",
+  "homepage": ""
+}
