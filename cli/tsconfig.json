@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "importHelpers": true,
+    "module": "commonjs",
+    "outDir": "lib",
+    "rootDir": "src",
+    "strict": true,
+    "target": "es2017",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "composite": true
+  },
+  "include": [
+    "src/**/*",
+    "./src/**/*.json",
+    "./node_modules/bn.js-typings/index.d.ts"
+  ]
+}
