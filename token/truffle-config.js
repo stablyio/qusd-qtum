@@ -1,6 +1,6 @@
 var HDWalletProvider = require("truffle-hdwallet-provider");
 
-const devPrivateKey = "cMoScV7xZ3LcnFVdbmw3B8UgBBzdtjoQdHMqm6RWnV1UeHmR3KGD"; // qTCPwBmjcPkixHKv4H2CDEYCRZZCfgeVNb OR 0x69b92c2b01cc7a0ca134cafba39d68ec68f10762
+const devPrivateKey = "cMbgxCJrTYUqgcmiC1berh5DFrtY1KeU4PXZ6NZxgenniF1mXCRk"; // qUbxboqjBRp96j3La8D1RYkyqx5uQbJPoW
 
 module.exports = {
   plugins: ["solidity-coverage"],
