@@ -1,5 +1,3 @@
 #import private keys and then prefund them
-qtum-cli -rpcuser=stably -rpcpassword=mandatorypassword importprivkey "cMbgxCJrTYUqgcmiC1berh5DFrtY1KeU4PXZ6NZxgenniF1mXCRk" # addr=qUbxboqjBRp96j3La8D1RYkyqx5uQbJPoW hdkeypath=m/88'/0'/1'
-qtum-cli -rpcuser=stably -rpcpassword=mandatorypassword importprivkey "cRcG1jizfBzHxfwu68aMjhy78CpnzD9gJYZ5ggDbzfYD3EQfGUDZ" # addr=qLn9vqbr2Gx3TsVR9QyTVB5mrMoh4x43Uf hdkeypath=m/88'/0'/2'
-qtum-cli -rpcuser=stably -rpcpassword=mandatorypassword generatetoaddress 500 qUbxboqjBRp96j3La8D1RYkyqx5uQbJPoW
-qtum-cli -rpcuser=stably -rpcpassword=mandatorypassword generatetoaddress 500 qLn9vqbr2Gx3TsVR9QyTVB5mrMoh4x43Uf
+qtum-cli -rpcuser=stably -rpcpassword=mandatorypassword importprivkey "cMbgxCJrTYUqgcmiC1berh5DFrtY1KeU4PXZ6NZxgenniF1mXCRk" # addr=qUbxboqjBRp96j3La8D1RYkyqx5uQbJPoW hex=0x7926223070547d2d15b2ef5e7383e541c338ffe9
+qtum-cli -rpcuser=stably -rpcpassword=mandatorypassword generatetoaddress 501 qUbxboqjBRp96j3La8D1RYkyqx5uQbJPoW

@@ -22,15 +22,21 @@ module.exports = {
       gasPrice: "0x64",
     },
     remoteJanusTestnet: {
-      // host: "ec2-34-222-247-128.us-west-2.compute.amazonaws.com",
-      // port: 23890,
+      host: "ec2-34-222-247-128.us-west-2.compute.amazonaws.com",
+      port: 23890,
+      network_id: "*",
+      gasPrice: "0x64",
+      networkCheckTimeout: 30000,
+      from: "0x69b92c2b01cc7a0ca134cafba39d68ec68f10762",
+    },
+    remoteJanusMainnet: {
       network_id: "*",
       gasPrice: "0x64",
       networkCheckTimeout: 10000,
       provider: function() {
         return new HDWalletProvider(
-          devPrivateKey,
-          "http://ec2-34-222-247-128.us-west-2.compute.amazonaws.com:23890"
+          "TODO MAINNET LEDGER DEVICE",
+          "http://ec2-34-222-247-128.us-west-2.compute.amazonaws.com:23889"
         );
       },
     },
