@@ -2,7 +2,6 @@ package transformer
 
 import (
 	"fmt"
-	"math/big"
 
 	"github.com/qtumproject/janus/pkg/eth"
 	"github.com/qtumproject/janus/pkg/qtum"
@@ -57,24 +56,35 @@ func (p *ProxyETHCall) ToRequest(ethreq *eth.CallRequest) (*qtum.CallContractReq
 		To:   ethreq.To,
 		From: from,
 		Data: ethreq.Data,
-		// TODO: qtum [code: -3] Invalid value for gasLimit (Minimum is: 10000)
-		// Incorrect gas format
-		GasLimit: big.NewInt(10000),
-		//GasLimit: ethreq.Gas.Int,
+		GasLimit: ethreq.Gas.Int,
 	}, nil
 }
 
 func (p *ProxyETHCall) ToResponse(qresp *qtum.CallContractResponse) interface{} {
 	excepted := qresp.ExecutionResult.Excepted
+	exceptedMessage := qresp.ExecutionResult.ExceptedMessage
+	
 	if excepted != "None" {
+		
+		if exceptedMessage != "" {
+			return &eth.JSONRPCError{
+				Message: fmt.Sprintf("%s", exceptedMessage),
+				Code:    -32000,
+			}
+		}
+
+		//This will most likely occur due to OutOfGasIntrinsic
 		return &eth.JSONRPCError{
-			Code:    -32000,
 			Message: fmt.Sprintf("VM exception: %s", excepted),
+			Code:    -32000,
 			// To see how eth_call supports revert reason, see:
 			// https://gist.github.com/hayeah/795bc18a683053218fb3ff5032d31144
 			//
 			// Data: ...
 		}
+		
+		
+		
 	}
 
 	data := utils.AddHexPrefix(qresp.ExecutionResult.Output)

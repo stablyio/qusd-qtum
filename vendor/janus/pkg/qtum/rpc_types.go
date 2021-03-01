@@ -318,6 +318,7 @@ type (
 		ExecutionResult struct {
 			GasUsed       int    `json:"gasUsed"`
 			Excepted      string `json:"excepted"`
+			ExceptedMessage string `json:"exceptedMessage"`
 			NewAddress    string `json:"newAddress"`
 			Output        string `json:"output"`
 			CodeDeposit   int    `json:"codeDeposit"`
@@ -675,6 +676,52 @@ func (r *GetBlockCountResponse) UnmarshalJSON(data []byte) error {
 	}
 
 	r.Int = i
+	return nil
+}
+
+// ========== GetHashrate & GetMining ============= //
+
+type (
+	//Switch things up to use Staking infor only
+	//Pass the reponse to their respective calls
+	GetHashrateResponse StakingInfo 
+	GetMiningResponse	StakingInfo
+
+	StakingInfo struct {
+		Enabled			bool `json:"enabled"`
+		Staking			bool `json:"staking"`
+		Errors			string `json:"errors"`
+		CurrentBlockTx	*big.Int `json:"currentblocktx"`
+		PooledTx		*big.Int `json:"pooledtx"`
+		Difficulty		float64 `json:"difficulty"`
+		SearchInterval	*big.Int `json:"search-interval"`
+		Weight			*big.Int `json:"weight"`
+		NetSakeWeight	*big.Int `json:"netstakeweight"`
+		ExpectedTime	*big.Int `json:"expectedtime"`
+	}
+)
+
+func (resp *GetHashrateResponse) UnmarshalJSON(data []byte) error {
+
+
+	var stakingInfo StakingInfo
+	if err := json.Unmarshal(data, &stakingInfo); err != nil {
+		return  err
+	}
+
+	resp.Difficulty = stakingInfo.Difficulty
+	return nil
+}
+
+func (resp *GetMiningResponse) UnmarshalJSON(data []byte) error {
+
+
+	var stakingInfo StakingInfo
+	if err := json.Unmarshal(data, &stakingInfo); err != nil {
+		return  err
+	}
+
+	resp.Staking = stakingInfo.Staking
 	return nil
 }
 

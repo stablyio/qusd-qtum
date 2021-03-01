@@ -6,7 +6,6 @@ import (
 
 	"github.com/pkg/errors"
 
-	"github.com/ethereum/go-ethereum/common/hexutil"
 	"github.com/qtumproject/janus/pkg/eth"
 	"github.com/qtumproject/janus/pkg/qtum"
 	"github.com/qtumproject/janus/pkg/utils"
@@ -23,21 +22,11 @@ func (p *ProxyETHGetFilterChanges) Method() string {
 }
 
 func (p *ProxyETHGetFilterChanges) Request(rawreq *eth.JSONRPCRequest) (interface{}, error) {
-	var req eth.GetFilterChangesRequest
-	if err := unmarshalRequest(rawreq.Params, &req); err != nil {
-		return nil, err
-	}
 
-	filterID, err := hexutil.DecodeUint64(string(req))
+	filter, err := processFilter(p, rawreq)
 	if err != nil {
 		return nil, err
 	}
-
-	_filter, ok := p.filter.Filter(filterID)
-	if !ok {
-		return nil, errors.New("Invalid filter id")
-	}
-	filter := _filter.(*eth.Filter)
 
 	switch filter.Type {
 	case eth.NewFilterTy:
