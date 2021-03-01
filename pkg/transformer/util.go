@@ -147,9 +147,19 @@ func formatQtumNonce(nonce int) string {
 // 	- string "latest" - for the latest mined block
 // 	- string "earliest" for the genesis block
 // 	- string "pending" - for the pending state/transactions
-func getBlockNumberByParam(p *qtum.Qtum, rawParam json.RawMessage, defaultVal int64) (*big.Int, error) {
+// Uses defaultVal to differntiate from a eth_getBlockByNumber req and eth_getLogs/eth_newFilter
+func getBlockNumberByParam(p *qtum.Qtum, rawParam json.RawMessage, defaultVal bool) (*big.Int, error) {
 	if len(rawParam) < 1 {
-		return nil, errors.Errorf("empty parameter value")
+		if (defaultVal) {
+			res, err := p.GetBlockChainInfo()
+			if err != nil {
+				return nil, err
+			}
+			return big.NewInt(res.Blocks), nil
+		} else {
+			return nil, errors.Errorf("empty parameter value")
+		}
+		
 	}
 	if !isBytesOfString(rawParam) {
 		return nil, errors.Errorf("invalid parameter format - string is expected")
@@ -216,4 +226,53 @@ func extractETHLogsFromTransactionReceipt(receipt *qtum.TransactionReceipt) []et
 		})
 	}
 	return logs
+}
+
+// translateTopics takes in an ethReq's topics field and translates it to a it's equivalent QtumReq
+// topics (optional) has a max lenght of 4
+func translateTopics(ethTopics []interface{})  ([]interface{}, error) {
+
+	var topics []interface{}
+
+	if len(ethTopics) > 4 {
+		return nil, errors.Errorf("invalid number of topics. Logs have a max of 4 topics.")
+	}
+
+	for _, topic := range ethTopics {
+		switch topic.(type) {
+		case []interface{}:
+			topic, err := translateTopics(topic.([]interface{}))
+			if err != nil {
+				return nil, err
+			}
+			topics = append(topics, topic)
+		case string:
+			topics = append(topics, utils.RemoveHexPrefix(topic.(string)))
+		case nil:
+			topics = append(topics, "null")
+		}
+	}
+
+	return topics, nil
+
+}
+
+func processFilter(p *ProxyETHGetFilterChanges, rawreq *eth.JSONRPCRequest) (*eth.Filter, error) {
+	var req eth.GetFilterChangesRequest
+	if err := unmarshalRequest(rawreq.Params, &req); err != nil {
+		return nil, err
+	}
+
+	filterID, err := hexutil.DecodeUint64(string(req))
+	if err != nil {
+		return nil, err
+	}
+
+	_filter, ok := p.filter.Filter(filterID)
+	if !ok {
+		return nil, errors.New("Invalid filter id")
+	}
+	filter := _filter.(*eth.Filter)
+
+	return filter, nil
 }

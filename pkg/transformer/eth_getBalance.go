@@ -2,6 +2,7 @@ package transformer
 
 import (
 	"errors"
+
 	"github.com/ethereum/go-ethereum/common/hexutil"
 	"github.com/qtumproject/janus/pkg/eth"
 	"github.com/qtumproject/janus/pkg/qtum"
@@ -56,13 +57,13 @@ func (p *ProxyETHGetBalance) Request(rawreq *eth.JSONRPCRequest) (interface{}, e
 		}
 
 		// 1 QTUM = 10 ^ 8 Satoshi
-		
+		balance = balance.Mul(decimal.NewFromFloat(1e8))
 		floatBalance, exact := balance.Float64()
-		
+
 		if exact != true {
 			return exact, errors.New("precision error:  float64 value does not represent the original decimal precisely")
 		}
-		
-		return hexutil.EncodeUint64(uint64(floatBalance * 1e8)), nil
+
+		return hexutil.EncodeUint64(uint64(floatBalance)), nil
 	}
 }
