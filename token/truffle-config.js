@@ -13,25 +13,25 @@ module.exports = {
       network_id: "*",
       port: 8555,
       gas: 10000000000000,
-      gasPrice: 0x01,
+      gasPrice: "0x32",
     },
     localJanus: {
       host: "localhost",
       port: 23889,
       network_id: "*",
-      gasPrice: "0x64",
+      gasPrice: "0x32",
     },
     remoteJanusTestnet: {
       host: "ec2-34-222-247-128.us-west-2.compute.amazonaws.com",
       port: 23890,
       network_id: "*",
-      gasPrice: "0x64",
+      gasPrice: "0x32",
       networkCheckTimeout: 30000,
       from: "0x69b92c2b01cc7a0ca134cafba39d68ec68f10762",
     },
     remoteJanusMainnet: {
       network_id: "*",
-      gasPrice: "0x64",
+      gasPrice: "0x32",
       networkCheckTimeout: 10000,
       provider: function() {
         return new HDWalletProvider(

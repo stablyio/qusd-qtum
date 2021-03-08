@@ -15,6 +15,6 @@ services:
     container_name: qtum_testnet
     ports:
       - "3890:3889"
-    command: qtumd -testnet=1 -rpcbind=0.0.0.0:3889 -rpcallowip=0.0.0.0/0 -rpcuser=stably -rpcpassword=mandatorypassword -printtoconsole
+    command: qtumd -testnet=1 -rpcbind=0.0.0.0:3889 -rpcallowip=0.0.0.0/0 -rpcuser=stably -rpcpassword=mandatorypassword -printtoconsole -logevents
     volumes:
       - /data/qtum-data/:/root/.qtum/

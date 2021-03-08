@@ -17,4 +17,4 @@ services:
     container_name: qtum_regtest
     ports:
       - "3889:3889"
-    command: qtumd -regtest -rpcbind=0.0.0.0:3889 -rpcallowip=0.0.0.0/0 -logevents -rpcuser=stably -rpcpassword=mandatorypassword -printtoconsole
+    command: qtumd -regtest -rpcbind=0.0.0.0:3889 -rpcallowip=0.0.0.0/0 -rpcuser=stably -rpcpassword=mandatorypassword -printtoconsole -logevents
