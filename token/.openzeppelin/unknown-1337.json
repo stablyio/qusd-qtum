@@ -1,0 +1,193 @@
+{
+  "manifestVersion": "3.1",
+  "impls": {
+    "3c4a265e78d48c4ca43bbc1caf02135802fd310e30751f71516d67bc4ddd52d5": {
+      "address": "0x345cA3e014Aaf5dcA488057592ee47305D9B3e10",
+      "txHash": "0xe72c3a9933aaf0fc6a43e227900a1d255483bc17c35c37a3bc3fea640e226f14",
+      "layout": {
+        "storage": [
+          {
+            "contract": "Initializable",
+            "label": "_initialized",
+            "type": "t_bool",
+            "src": "../@openzeppelin/contracts/proxy/Initializable.sol:25"
+          },
+          {
+            "contract": "Initializable",
+            "label": "_initializing",
+            "type": "t_bool",
+            "src": "../@openzeppelin/contracts/proxy/Initializable.sol:30"
+          },
+          {
+            "contract": "QUSDImplementation",
+            "label": "_name",
+            "type": "t_string_storage",
+            "src": "QUSDImplementation.sol:36"
+          },
+          {
+            "contract": "QUSDImplementation",
+            "label": "_symbol",
+            "type": "t_string_storage",
+            "src": "QUSDImplementation.sol:37"
+          },
+          {
+            "contract": "QUSDImplementation",
+            "label": "_totalSupply",
+            "type": "t_uint256",
+            "src": "QUSDImplementation.sol:41"
+          },
+          {
+            "contract": "QUSDImplementation",
+            "label": "_allowances",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))",
+            "src": "QUSDImplementation.sol:42"
+          },
+          {
+            "contract": "QUSDImplementation",
+            "label": "_labelExistence",
+            "type": "t_mapping(t_uint32,t_bool)",
+            "src": "QUSDImplementation.sol:45"
+          },
+          {
+            "contract": "QUSDImplementation",
+            "label": "_labelSupply",
+            "type": "t_mapping(t_uint32,t_uint256)",
+            "src": "QUSDImplementation.sol:46"
+          },
+          {
+            "contract": "QUSDImplementation",
+            "label": "_userLabelQueue",
+            "type": "t_mapping(t_address,t_mapping(t_uint256,t_uint32))",
+            "src": "QUSDImplementation.sol:47"
+          },
+          {
+            "contract": "QUSDImplementation",
+            "label": "_userLabelQueueHeadIndex",
+            "type": "t_mapping(t_address,t_uint256)",
+            "src": "QUSDImplementation.sol:48"
+          },
+          {
+            "contract": "QUSDImplementation",
+            "label": "_userLabelQueueTailIndex",
+            "type": "t_mapping(t_address,t_uint256)",
+            "src": "QUSDImplementation.sol:49"
+          },
+          {
+            "contract": "QUSDImplementation",
+            "label": "_labelUserBalances",
+            "type": "t_mapping(t_uint32,t_mapping(t_address,t_uint256))",
+            "src": "QUSDImplementation.sol:50"
+          },
+          {
+            "contract": "QUSDImplementation",
+            "label": "_labelUserExistence",
+            "type": "t_mapping(t_uint32,t_mapping(t_address,t_bool))",
+            "src": "QUSDImplementation.sol:51"
+          },
+          {
+            "contract": "QUSDImplementation",
+            "label": "_userBalances",
+            "type": "t_mapping(t_address,t_uint256)",
+            "src": "QUSDImplementation.sol:52"
+          },
+          {
+            "contract": "QUSDImplementation",
+            "label": "_consolidationLabel",
+            "type": "t_uint32",
+            "src": "QUSDImplementation.sol:53"
+          },
+          {
+            "contract": "QUSDImplementation",
+            "label": "_consolidationThreshold",
+            "type": "t_uint256",
+            "src": "QUSDImplementation.sol:54"
+          },
+          {
+            "contract": "QUSDImplementation",
+            "label": "_owner",
+            "type": "t_address",
+            "src": "QUSDImplementation.sol:57"
+          },
+          {
+            "contract": "QUSDImplementation",
+            "label": "_proposedOwner",
+            "type": "t_address",
+            "src": "QUSDImplementation.sol:58"
+          },
+          {
+            "contract": "QUSDImplementation",
+            "label": "_paused",
+            "type": "t_bool",
+            "src": "QUSDImplementation.sol:61"
+          },
+          {
+            "contract": "QUSDImplementation",
+            "label": "_complianceRole",
+            "type": "t_address",
+            "src": "QUSDImplementation.sol:64"
+          },
+          {
+            "contract": "QUSDImplementation",
+            "label": "_frozen",
+            "type": "t_mapping(t_address,t_bool)",
+            "src": "QUSDImplementation.sol:65"
+          },
+          {
+            "contract": "QUSDImplementation",
+            "label": "_issuer",
+            "type": "t_address",
+            "src": "QUSDImplementation.sol:68"
+          }
+        ],
+        "types": {
+          "t_string_storage": {
+            "label": "string"
+          },
+          "t_uint256": {
+            "label": "uint256"
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+            "label": "mapping(address => mapping(address => uint256))"
+          },
+          "t_address": {
+            "label": "address"
+          },
+          "t_mapping(t_address,t_uint256)": {
+            "label": "mapping(address => uint256)"
+          },
+          "t_mapping(t_uint32,t_bool)": {
+            "label": "mapping(uint32 => bool)"
+          },
+          "t_uint32": {
+            "label": "uint32"
+          },
+          "t_bool": {
+            "label": "bool"
+          },
+          "t_mapping(t_uint32,t_uint256)": {
+            "label": "mapping(uint32 => uint256)"
+          },
+          "t_mapping(t_address,t_mapping(t_uint256,t_uint32))": {
+            "label": "mapping(address => mapping(uint256 => uint32))"
+          },
+          "t_mapping(t_uint256,t_uint32)": {
+            "label": "mapping(uint256 => uint32)"
+          },
+          "t_mapping(t_uint32,t_mapping(t_address,t_uint256))": {
+            "label": "mapping(uint32 => mapping(address => uint256))"
+          },
+          "t_mapping(t_uint32,t_mapping(t_address,t_bool))": {
+            "label": "mapping(uint32 => mapping(address => bool))"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "label": "mapping(address => bool)"
+          }
+        }
+      }
+    }
+  },
+  "admin": {
+    "address": "0xf25186B5081Ff5cE73482AD761DB0eB0d25abfBF",
+    "txHash": "0xc7696e0438d061adc1f15d42afa2083c87a774bc5684297b1b031c956bbf7537"
+  }
+}

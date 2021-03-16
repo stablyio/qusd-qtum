@@ -17,6 +17,14 @@ module.exports = {
       gas: 10000000000000,
       gasPrice: "0x32",
     },
+    testnet:{
+      host: "localhost",
+      port: 3889,
+      network_id: "*",
+      gasPrice: "0x32",
+      networkCheckTimeout: 30000,
+      from: "0x69b92c2b01cc7a0ca134cafba39d68ec68f10762",
+    },
     localJanus: {
       host: "localhost",
       port: 23889,

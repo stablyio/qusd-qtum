@@ -1,0 +1,740 @@
+{
+	"compiler": {
+		"version": "0.6.12+commit.27d51765"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "initialImplementation",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "initialMintWaitBlocks",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "member",
+						"type": "address"
+					}
+				],
+				"name": "AddMember",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "oldImplementation",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "newImplementation",
+						"type": "address"
+					}
+				],
+				"name": "ImplementationChange",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "proposer",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "pendingMintsIndex",
+						"type": "uint256"
+					}
+				],
+				"name": "MintProposed",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "sender",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "pendingMintsIndex",
+						"type": "uint256"
+					}
+				],
+				"name": "MintRejected",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "sender",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "pendingMintsIndex",
+						"type": "uint256"
+					}
+				],
+				"name": "MintSent",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "oldMintWaitBlocks",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "newMintWaitBlocks",
+						"type": "uint256"
+					}
+				],
+				"name": "MintWaitBlocksUpdated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "oldProposedOwner",
+						"type": "address"
+					}
+				],
+				"name": "OwnershipTransferDisregarded",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "currentOwner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "proposedOwner",
+						"type": "address"
+					}
+				],
+				"name": "OwnershipTransferProposed",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "oldOwner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "OwnershipTransferred",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "member",
+						"type": "address"
+					}
+				],
+				"name": "RemoveMember",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint32",
+						"name": "label",
+						"type": "uint32"
+					}
+				],
+				"name": "addLabel",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "addr",
+						"type": "address"
+					}
+				],
+				"name": "addMember",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "claimOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "disregardProposeOwner",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "implementation",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "addr",
+						"type": "address"
+					}
+				],
+				"name": "isMember",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "maxMembers",
+				"outputs": [
+					{
+						"internalType": "uint8",
+						"name": "",
+						"type": "uint8"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "mintWaitBlocks",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "numMembers",
+				"outputs": [
+					{
+						"internalType": "uint8",
+						"name": "",
+						"type": "uint8"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "pendingMints",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "recipient",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint32",
+						"name": "label",
+						"type": "uint32"
+					},
+					{
+						"internalType": "uint256",
+						"name": "canMintAtBlock",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "pendingMintsIndex",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					}
+				],
+				"name": "proposeMint",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint32",
+						"name": "label",
+						"type": "uint32"
+					}
+				],
+				"name": "proposeMintForLabel",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "newProposedOwner",
+						"type": "address"
+					}
+				],
+				"name": "proposeOwner",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "proposedOwner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "index",
+						"type": "uint256"
+					}
+				],
+				"name": "rejectMint",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint32",
+						"name": "label",
+						"type": "uint32"
+					}
+				],
+				"name": "removeLabel",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "addr",
+						"type": "address"
+					}
+				],
+				"name": "removeMember",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "index",
+						"type": "uint256"
+					}
+				],
+				"name": "sendMint",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "implementationAddress",
+						"type": "address"
+					}
+				],
+				"name": "setImplementation",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "newMintWaitBlocks",
+						"type": "uint256"
+					}
+				],
+				"name": "setMintWaitBlocks",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"details": "This contract will be the issuer for QUSD. It provides a check and balance on token issuance by requiring mints to be first proposed and a certain number of blocks to have passed before it can be executed. This gives other issuers a time to check that the issuance is valid and if not, reject the mint.",
+			"kind": "dev",
+			"methods": {
+				"addMember(address)": {
+					"details": "Adds a new member.",
+					"params": {
+						"addr": "The address to add."
+					}
+				},
+				"claimOwnership()": {
+					"details": "Allows the proposed owner to complete transferring control of the contract to the proposedOwner."
+				},
+				"disregardProposeOwner()": {
+					"details": "Allows the current owner or proposed owner to cancel transferring control of the contract to a proposedOwner"
+				},
+				"implementation()": {
+					"returns": {
+						"_0": "The address of the implementation."
+					}
+				},
+				"isMember(address)": {
+					"returns": {
+						"_0": "Whether the address is a member."
+					}
+				},
+				"maxMembers()": {
+					"returns": {
+						"_0": "The maximum members allowed."
+					}
+				},
+				"mintWaitBlocks()": {
+					"returns": {
+						"_0": "The minimum number of blocks a pending mint must wait before it can be sent."
+					}
+				},
+				"numMembers()": {
+					"returns": {
+						"_0": "The current number of members."
+					}
+				},
+				"owner()": {
+					"details": "Current owner"
+				},
+				"pendingMintsIndex()": {
+					"returns": {
+						"_0": "The index of the next new pending mint."
+					}
+				},
+				"proposeMint(address,uint256)": {
+					"details": "Creates a mint proposal that must wait _mintWaitBlocks blocks before it can be executed.",
+					"params": {
+						"to": "The recipient of the minted tokens.",
+						"value": "The number of tokens to mint."
+					},
+					"returns": {
+						"_0": "A uint256 that represents the index of the mint proposal."
+					}
+				},
+				"proposeMintForLabel(address,uint256,uint32)": {
+					"details": "Creates a mint proposal with a label that must wait _mintWaitBlocks blocks before it can be executed.",
+					"params": {
+						"label": "The label to mint under",
+						"to": "The recipient of the minted tokens.",
+						"value": "The number of tokens to mint."
+					},
+					"returns": {
+						"_0": "A uint256 that represents the index of the mint proposal."
+					}
+				},
+				"proposeOwner(address)": {
+					"details": "Allows the current owner to begin transferring control of the contract to a proposedOwner",
+					"params": {
+						"newProposedOwner": "The address to transfer ownership to."
+					}
+				},
+				"proposedOwner()": {
+					"details": "Proposed new owner"
+				},
+				"rejectMint(uint256)": {
+					"details": "Deletes the mint proposal, can be called by any issuer on any mint proposal, provides a check and balance on token minting.",
+					"params": {
+						"index": "The index of the _pendingMints to delete."
+					},
+					"returns": {
+						"_0": "A boolean that indicates if the operation was successful."
+					}
+				},
+				"removeMember(address)": {
+					"details": "Removes an existing member.",
+					"params": {
+						"addr": "The address to remove."
+					}
+				},
+				"sendMint(uint256)": {
+					"details": "Executes a mint proposal that has waited sufficient blocks.",
+					"params": {
+						"index": "The index of the _pendingMints to execute."
+					},
+					"returns": {
+						"_0": "A boolean that indicates if the operation was successful."
+					}
+				},
+				"setImplementation(address)": {
+					"details": "Sets the implementation contract address.",
+					"params": {
+						"implementationAddress": "The address of the implementation to point to."
+					}
+				}
+			},
+			"title": "QUSDIssuer",
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"localhost/contracts/QUSDIssuer.sol": "QUSDIssuer"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"@openzeppelin/contracts/math/SafeMath.sol": {
+			"keccak256": "0xcc78a17dd88fa5a2edc60c8489e2f405c0913b377216a5b26b35656b2d0dab52",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://526dc85e1f9b9b45830e202568d267d93dde7a4fcccf4ad7798dadcd92304d3c",
+				"dweb:/ipfs/QmaoXMB972J3cSDLtBq3xBo4jLwqD2uzXTwujtSPqkYVhR"
+			]
+		},
+		"@openzeppelin/contracts/proxy/Initializable.sol": {
+			"keccak256": "0x9abeffe138f098b16557187383ba0f9e8503602fa95cd668132986ee115237ed",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://fb863d688f8bf04b846369451afba15e8129b2ee16bd1631c12138c262d1bf68",
+				"dweb:/ipfs/QmRE3EmJ1T4Hg5HjGHVupP2a3Vrnd8jRY8GtB6J52QNX9z"
+			]
+		},
+		"@openzeppelin/contracts/token/ERC20/IERC20.sol": {
+			"keccak256": "0x5f02220344881ce43204ae4a6281145a67bc52c2bb1290a791857df3d19d78f5",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://24427744bd3e6cb73c17010119af12a318289c0253a4d9acb8576c9fb3797b08",
+				"dweb:/ipfs/QmTLDqpKRBuxGxRAmjgXt9AkXyACW3MtKzi7PYjm5iMfGC"
+			]
+		},
+		"@openzeppelin/contracts/utils/Address.sol": {
+			"keccak256": "0x28911e614500ae7c607a432a709d35da25f3bc5ddc8bd12b278b66358070c0ea",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://256c8c8af5eb072bc473226ab2b2187149b8fc04f5f4a4820db22527f5ce8e3c",
+				"dweb:/ipfs/QmRvi5BhnL7Rxf85KrJhwM6RRhukm4tzoctRdgQEheNyiN"
+			]
+		},
+		"localhost/contracts/QUSDImplementation.sol": {
+			"keccak256": "0xf37daa8cd2b81a4373897637c8c92fb502040b8ae79d98b7534f9c16f88e1886",
+			"license": "UNLICENSED",
+			"urls": [
+				"bzz-raw://eed509e0e1e136662f9adb6ea347ff703b534d26a26630a6f1991be73e432467",
+				"dweb:/ipfs/QmYxBPoesToe9zWgVfG6t1zZUe3G4wS2HkpYErvKKZSuft"
+			]
+		},
+		"localhost/contracts/QUSDIssuer.sol": {
+			"keccak256": "0x7e4a7038cf7d686bd52b938b61f4ff133e4d3b3c951a31aaa3b8de2f261a70de",
+			"license": "UNLICENSED",
+			"urls": [
+				"bzz-raw://25c8e201785b2e5a35ff83cb973c5d3281fe1ff260f06c0f4d76bcff940261fe",
+				"dweb:/ipfs/QmSi9GP9muec5ok7qasoTqVGk2RumrPspkshFumCW4BsjP"
+			]
+		}
+	},
+	"version": 1
+}

@@ -4,7 +4,9 @@
   "description": "QUSD Token Contracts",
   "main": "truffle-config.js",
   "dependencies": {
-    "@openzeppelin/contracts": "^3.4.0"
+    "@openzeppelin/contracts": "^3.4.0",
+    "coinkey": "^3.0.0",
+    "truffle-privatekey-provider": "^1.5.0"
   },
   "devDependencies": {
     "@openzeppelin/cli": "^2.8.2",

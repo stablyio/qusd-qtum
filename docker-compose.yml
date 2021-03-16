@@ -1,0 +1,27 @@
+ version: '3.3'
+ services:
+   qtum:
+     image: qtum/qtum:latest
+     container_name: qtum
+     hostname: qtum
+     ports:
+       - 3889:3889
+     volumes:
+       - /Users/quangle/Desktop/work/qusd-qtum2/data/:/root/.qtum/
+     command: qtumd -regtest -rpcbind=0.0.0.0:3889 -rpcallowip=0.0.0.0/0 -logevents -rpcuser=qtum -rpcpassword=qtum -deprecatedrpc=accounts -printtoconsole
+ 
+   janus:
+     build:
+       context: ./vendor/janus/
+       dockerfile: ./Dockerfile
+     image: qtum/janus:latest
+     depends_on:
+       - qtum
+     ports:
+       - 23889:23889
+     volumes:
+       - ./vendor/janus/docker/standalone/myaccounts.txt:$GOPATH/github.com/qtumproject/janus/myaccounts.txt
+     environment:
+       - QTUM_RPC=http://qtum:qtum@qtum:3889
+       - QTUM_NETWORK=regtest
+     command: --bind 0.0.0.0 --accounts $GOPATH/github.com/qtumproject/janus/myaccounts.txt --dev
