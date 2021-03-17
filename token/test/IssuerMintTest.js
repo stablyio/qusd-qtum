@@ -6,10 +6,6 @@ const QUSDContract = artifacts.require("QUSDImplementation.sol");
 const assertRevert = require("./helpers/assertRevert");
 const mineBlocks = require("./helpers/mineBlocks");
 
-var HDWalletProvider = require("truffle-hdwallet-provider");
-var PrivateKeyProvider = require("truffle-privatekey-provider");
-var CoinKey = require("coinkey");
-
 // Test that the Issuer can mint tokens.
 contract("Issuer mint", function ([owner, member1, member2, notmember]) {
   const mintWaitBlocks = 3;
@@ -17,10 +13,10 @@ contract("Issuer mint", function ([owner, member1, member2, notmember]) {
   beforeEach(async function () {
     const proxiedQUSD = await deployProxy(QUSDContract);
     this.token = proxiedQUSD;
+
     const issuer = await QUSDIssuer.new(proxiedQUSD.address, mintWaitBlocks, {
       from: owner,
     });
-    
     this.issuer = issuer;
     await this.issuer.addMember(member1, { from: owner });
     await this.issuer.addMember(member2, { from: owner });
@@ -32,6 +28,7 @@ contract("Issuer mint", function ([owner, member1, member2, notmember]) {
     it("allows owner to set the new threshold", async function () {
       await this.issuer.setMintWaitBlocks(100, { from: owner });
       const mintWaitBlocks = await this.issuer.mintWaitBlocks();
+
       assert.equal(mintWaitBlocks, 100);
     });
 

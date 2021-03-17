@@ -9,7 +9,7 @@ services:
       - QTUM_RPC=http://stably:mandatorypassword@qtum:3889
     depends_on:
       - qtum
-    command: --bind 0.0.0.0 --accounts ./myaccounts.txt --dev
+    command: --bind 0.0.0.0 --accounts /go/myaccounts.txt --dev
     volumes:
       - ./myaccounts.txt:/go/myaccounts.txt
   qtum:

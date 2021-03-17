@@ -1,6 +1,4 @@
 var HDWalletProvider = require("truffle-hdwallet-provider");
-var PrivateKeyProvider = require("truffle-privatekey-provider");
-var CoinKey = require("coinkey");
 
 const devPrivateKey = "cMbgxCJrTYUqgcmiC1berh5DFrtY1KeU4PXZ6NZxgenniF1mXCRk"; // qUbxboqjBRp96j3La8D1RYkyqx5uQbJPoW
 
@@ -20,16 +18,7 @@ module.exports = {
     localJanus: {
       host: "localhost",
       port: 23889,
-      // cMbgxCJrTYUqgcmiC1berh5DFrtY1KeU4PXZ6NZxgenniF1mXCRk
-      // provider: function() {
-      //   const pk = CoinKey.fromWif("cMbgxCJrTYUqgcmiC1berh5DFrtY1KeU4PXZ6NZxgenniF1mXCRk");
-      //   return new PrivateKeyProvider(
-      //   pk.privateKey.toString("hex"),
-      //   "http://localhost:23889"
-      // );
-      // },
       network_id: "*",
-      from: "0x7926223070547d2d15b2ef5e7383e541c338ffe9",
       gasPrice: "0x32",
     },
     remoteJanusTestnet: {

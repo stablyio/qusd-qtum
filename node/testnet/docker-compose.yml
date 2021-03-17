@@ -4,18 +4,17 @@ services:
     image: stably/janus:latest
     container_name: janus_testnet
     ports:
-    # - "23890:23889"
-      - "3889:3889"
+      - "23890:23889"
     environment:
-      #- QTUM_RPC=http://stably:mandatorypassword@qtum:23890
-      - QTUM_NETWORK=testnet
+      - QTUM_RPC=http://stably:mandatorypassword@qtum:3889
     depends_on:
       - qtum
-    command: --bind 0.0.0.0 -v `pwd`:/dapp
+    command: --bind 0.0.0.0
   qtum:
     image: qtum/qtum:latest
     container_name: qtum_testnet
     ports:
-      - "3889:3889"
-    command: qtumd -testnet=1 -rpcbind=0.0.0.0:3889 -rpcallowip=0.0.0.0/0 -rpcuser=qtum -rpcpassword=qtum -printtoconsole -logevents
-    
+      - "3890:3889"
+    command: qtumd -testnet=1 -rpcbind=0.0.0.0:3889 -rpcallowip=0.0.0.0/0 -rpcuser=stably -rpcpassword=mandatorypassword -printtoconsole -logevents
+    volumes:
+      - /data/qtum-data/:/root/.qtum/
