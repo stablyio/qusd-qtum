@@ -140,7 +140,7 @@ contract QUSDIssuer {
      */
     function addMember(address addr) external onlyOwner {
         require(_numMembers < _maxMembers, "exceeds the membership limit");
-        require(_members[addr] == false, "already a member");
+        require(!_members[addr], "already a member");
         _members[addr] = true;
         _numMembers += 1;
         emit AddMember(addr);
@@ -151,7 +151,7 @@ contract QUSDIssuer {
      * @param addr The address to remove.
      */
     function removeMember(address addr) external onlyOwner {
-        require(_members[addr] == true, "not a member");
+        require(_members[addr], "not a member");
         _members[addr] = false;
         _numMembers -= 1;
         emit RemoveMember(addr);

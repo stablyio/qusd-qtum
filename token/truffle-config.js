@@ -8,6 +8,12 @@ module.exports = {
   // See <http://truffleframework.com/docs/advanced/configuration>
   // to customize your Truffle configuration!
   networks: {
+    development: {
+      host: "127.0.0.1",
+      port: 8545,
+      network_id: "*", // Match any network id
+      disableConfirmationListener: true, // Workaround to avoid issue with excessive eth_getBlockByNumber calls: https://github.com/trufflesuite/truffle/issues/3471 https://github.com/trufflesuite/truffle/issues/3522 https://github.com/trufflesuite/truffle/issues/2688
+    },
     coverage: {
       host: "localhost",
       network_id: "*",

@@ -413,7 +413,7 @@ contract QUSDImplementation is IERC20, Initializable {
 
         uint32 destinationLabel = label;
         if (
-            _labelExistence[destinationLabel] == false ||
+            !_labelExistence[destinationLabel] ||
             value <= _consolidationThreshold
         ) {
             destinationLabel = _consolidationLabel;
@@ -421,7 +421,7 @@ contract QUSDImplementation is IERC20, Initializable {
             _labelSupply[destinationLabel] = _labelSupply[_consolidationLabel]
                 .add(value);
         }
-        if (_labelUserExistence[destinationLabel][to] == false) {
+        if (!_labelUserExistence[destinationLabel][to]) {
             _enqueueUserLabelQueue(to, destinationLabel);
         }
         _labelUserBalances[destinationLabel][to] = _labelUserBalances[
@@ -699,7 +699,7 @@ contract QUSDImplementation is IERC20, Initializable {
         emit Mint(to, value);
         emit Transfer(address(0), to, value);
 
-        if (_labelUserExistence[label][to] == false) {
+        if (!_labelUserExistence[label][to]) {
             _enqueueUserLabelQueue(to, label);
         }
         _labelUserBalances[label][to] = _labelUserBalances[label][to].add(
@@ -882,7 +882,7 @@ contract QUSDImplementation is IERC20, Initializable {
 
     function _enqueueUserLabelQueue(address user, uint32 label) internal {
         require(
-            _labelUserExistence[label][user] == false,
+            !_labelUserExistence[label][user],
             "label already exists for user"
         );
         if (_userLabelQueueTailIndex[user] == 0) {
