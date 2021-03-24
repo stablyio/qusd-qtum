@@ -75,7 +75,7 @@ contract("Issuer membership", function ([owner, member1, member2, notmember]) {
       await assertRevert(this.issuer.removeMember(member1, { from: owner }));
     });
 
-    it("cannot add members beyond limit", async function () {
+    it.skip("cannot add members beyond limit", async function () {
       var addresses = [];
       // Fill up the member slots
       for (var i = 0; i < 255; i++) {

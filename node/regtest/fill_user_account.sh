@@ -6,9 +6,11 @@ qtum-cli -rpcuser=stably -rpcpassword=mandatorypassword generatetoaddress 600 qU
 
 # account 2 - addr=qLn9vqbr2Gx3TsVR9QyTVB5mrMoh4x43Uf hex=0x2352be3db3177f0a07efbe6da5857615b8c9901d
 qtum-cli -rpcuser=stably -rpcpassword=mandatorypassword importprivkey "cRcG1jizfBzHxfwu68aMjhy78CpnzD9gJYZ5ggDbzfYD3EQfGUDZ" "ac2"
+qtum-cli -rpcuser=stably -rpcpassword=mandatorypassword generatetoaddress 200 qLn9vqbr2Gx3TsVR9QyTVB5mrMoh4x43Uf
 
 # account 3 - addr=qTCCy8qy7pW94EApdoBjYc1vQ2w68UnXPi hex=0x69b004ac2b3993bf2fdf56b02746a1f57997420d
 qtum-cli -rpcuser=stably -rpcpassword=mandatorypassword importprivkey "cV79qBoCSA2NDrJz8S3T7J8f3zgkGfg4ua4hRRXfhbnq5VhXkukT" "ac3"
+qtum-cli -rpcuser=stably -rpcpassword=mandatorypassword generatetoaddress 200 qTCCy8qy7pW94EApdoBjYc1vQ2w68UnXPi
 
 # account 4 - addr=qWMi6ne9mDQFatRGejxdDYVUV9rQVkAFGp hex=0x8c647515f03daeefd09872d7530fa8d8450f069a
 qtum-cli -rpcuser=stably -rpcpassword=mandatorypassword importprivkey "cV93kaaV8hvNqZ711s2z9jVWLYEtwwsVpyFeEZCP6otiZgrCTiEW" "ac4"
