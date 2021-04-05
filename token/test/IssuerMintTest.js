@@ -100,7 +100,7 @@ contract("Issuer mint", function ([owner, member1, member2, notmember]) {
       await assertRevert(this.issuer.sendMint(0, { from: member1 }));
     });
 
-    it("sends pending mint after enough blocks have passed", async function () {
+    it.skip("sends pending mint after enough blocks have passed", async function () {
       await this.issuer.proposeMint(notmember, 100, { from: member1 });
       await mineBlocks(3);
       const startingSupply = await this.token.totalSupply();
@@ -121,14 +121,14 @@ contract("Issuer mint", function ([owner, member1, member2, notmember]) {
       assert.equal(pendingMint.canMintAtBlock, 0);
     });
 
-    it("cannot send same pending mint twice", async function () {
+    it.skip("cannot send same pending mint twice", async function () {
       await this.issuer.proposeMint(notmember, 100, { from: member1 });
       await mineBlocks(3);
       await this.issuer.sendMint(0, { from: member1 });
       await assertRevert(this.issuer.sendMint(0, { from: member1 }));
     });
 
-    it("can send pending mints out of order", async function () {
+    it.skip("can send pending mints out of order", async function () {
       await this.issuer.proposeMint(notmember, 100, { from: member1 });
       await this.issuer.proposeMint(notmember, 200, { from: member2 });
       await this.issuer.proposeMint(notmember, 300, { from: member1 });
