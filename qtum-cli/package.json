@@ -9,7 +9,9 @@
   "bugs": "https://github.com/quangnle/qtumcli/issues",
   "devDependencies": {
     "@oclif/dev-cli": "^1.26.0",
-    "globby": "^10.0.2"
+    "@types/node": "8.0.31",
+    "globby": "^10.0.2",
+    "typescript": "2.5.2"
   },
   "engines": {
     "node": ">=8.0.0"
@@ -44,6 +46,6 @@
     "@oclif/command": "^1.8.0",
     "@oclif/config": "^1.17.0",
     "@oclif/plugin-help": "^3.2.2",
-    "qtumjs": "^1.3.2"
+    "qtumjs": "https://github.com/quangnle/qtumjs.git#regtest"
   }
 }
